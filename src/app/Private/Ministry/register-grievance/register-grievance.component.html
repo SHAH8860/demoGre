@@ -1,0 +1,219 @@
+<div class="card-body">
+  <div class="grievancehd">
+    <h5>Register Grievance Form</h5>
+    @if(registrationNo){
+    <h5>Registration No:{{ registrationNo }}</h5>
+    }
+  </div>
+  <div class="form-card grievance-form">
+    <form [formGroup]="formSubmit">
+      <div class="row align-items-center">
+        <div class="col-md-3 form-group">
+          <label for="">Name </label>
+        </div>
+        <div class="col-md-4 form-group">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <input matInput placeholder="Enter name" value="" formControlName="name" readonly />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-md-3 form-group">
+          <label for="">Mobile No. </label>
+        </div>
+        <div class="col-md-4 form-group">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <input matInput placeholder="Enter Mobile No" value="" formControlName="mobileNumber" readonly />
+          </mat-form-field>
+        </div>
+      </div>
+      <ng-container *ngIf="userType === 'State' || userType === 'District'">
+        <div class="row align-items-center" *ngIf="userType === 'District'">
+          <div class="col-md-3 form-group">
+            <label for="">District </label>
+          </div>
+          <div class="col-md-4 form-group">
+            <mat-form-field appearance="outline" class="example-full-width">
+              <input matInput placeholder="Enter District" value="" formControlName="district" readonly />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col-md-3 form-group">
+            <label for="">State </label>
+          </div>
+          <div class="col-md-4 form-group">
+            <mat-form-field appearance="outline" class="example-full-width">
+              <input matInput placeholder="Enter State" value="" formControlName="state" readonly />
+            </mat-form-field>
+          </div>
+        </div>
+      </ng-container>
+      <div class="row align-items-center">
+        <div class="col-md-3 form-group">
+          <label for="">Ministry</label>
+        </div>
+        <div class="col-md-4 form-group">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <input matInput placeholder="Enter Ministry" formControlName="ministryId" value="" readonly />
+
+            <mat-error
+              *ngIf="(formSubmit.controls['ministryId'].touched )  && formSubmit.controls['ministryId'].errors?.['required']">
+              This field is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      @if(!this.ministryNameToggle){
+      <div class="row align-items-center">
+        <div class="col-md-3 form-group">
+          <label for="">Issue Related To <span class="start">*</span></label>
+        </div>
+        <div class="col-md-4 form-group fieldwrapper">
+          <mat-form-field appearance="outline">
+            <mat-label>Select an option</mat-label>
+            <mat-select formControlName="mainIssueCategory">
+              <mat-option>Select Option</mat-option>
+              <mat-option *ngFor="let mainIssue of mainIssueData" [value]="mainIssue.id">
+                {{ mainIssue.issueName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      }
+
+      <div class="row align-items-center">
+        <div class="col-md-3 form-group">
+          <label for="">Address 1
+            <span class="start" *ngIf="!this.ministryNameToggle">*</span></label>
+        </div>
+        <div class="col-md-4" [ngClass]="
+            ministryNameToggle ? 'form-group' : 'form-group fieldwrapper'
+          ">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <input matInput placeholder="Enter Address" maxlength="100" value="" formControlName="address1"
+              [readonly]="" />
+
+            <mat-error
+              *ngIf="(formSubmit.controls['address1'].touched )  && formSubmit.controls['address1'].errors?.['required']">
+              This field is required
+            </mat-error>
+            <mat-error *ngIf="formSubmit.get('address1')?.errors?.['whitespace']">
+              Input cannot be empty or contain only spaces.
+            </mat-error>
+            <mat-error *ngIf="formSubmit.get('address1')?.errors?.['invalidCharacters']">
+              Only letters, digits, spaces, and these characters are allowed: ,
+              - / \
+            </mat-error>
+            <mat-error *ngIf="
+                formSubmit.get('address1')?.hasError('pattern') &&
+                formSubmit.controls['address1'].touched
+              ">
+              No three consecutive 0s are allowed
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-md-3 form-group">
+          <label for="">Address 2</label>
+        </div>
+        <div class="col-md-4 form-group" [ngClass]="
+            ministryNameToggle ? 'form-group' : 'form-group fieldwrapper'
+          ">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <input matInput placeholder="Enter Address" value="" maxlength="100" formControlName="address2"
+              [readonly]="" />
+            <mat-error *ngIf="formSubmit.get('address2')?.errors?.['whitespace']">
+              Input cannot be empty or contain only spaces.
+            </mat-error>
+            <mat-error *ngIf="formSubmit.get('address2')?.errors?.['invalidCharacters']">
+              Only letters, digits, spaces, and these characters are allowed: ,
+              - / \
+            </mat-error>
+            <mat-error *ngIf="
+                formSubmit.get('address2')?.hasError('pattern') &&
+                formSubmit.controls['address2'].touched
+              ">
+              No three consecutive 0s are allowed
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-md-3 form-group">
+          <label for="">File</label>
+        </div>
+        <div class="col-md-9 form-group icon_parent_class">
+          <input type="file" formControlName="file" (change)="onFileSelected($event)" class="inputupload"
+            placeholder="Select Files" *ngIf="!this.ministryNameToggle" />
+          <span class="allowed" *ngIf="!this.ministryNameToggle">Only PDF file allowed and File size should not exceed
+            200KB</span>
+          @if(fileUploadShow && this.ministryNameToggle){
+          <span *ngIf="this.ministryNameToggle" (click)="fileUploadShow ? downloadPDFFile() : null"
+            class="download_icon" matTooltip="{{ fileUploadShow ? 'Download PDF' : 'No file' }}"
+            matTooltipPosition="above">
+            <small>Download your uploaded file</small>
+            <i class="bi bi-arrow-down-circle"></i>
+          </span>
+          } @else { @if(this.ministryNameToggle){
+          <p>No File Uploaded</p>
+          } }
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-md-3">
+          <label for="">Query
+            <span class="start" *ngIf="!this.ministryNameToggle">*</span></label>
+        </div>
+        <div class="col-md-4 textareabg">
+          <textarea appearance="outline" class="form-control" id="" rows="3" placeholder="Write" maxlength="200"
+            formControlName="query" [readonly]="ministryNameToggle"></textarea>
+          <mat-error
+            *ngIf="(formSubmit.controls['query'].touched )  && formSubmit.controls['query'].errors?.['required']">
+            This field is required
+          </mat-error>
+          <mat-error
+            *ngIf="(formSubmit.controls['query'].touched   && formSubmit.controls['query'].errors?.['whitespace'])">
+            Input cannot be empty or contain only spaces.
+          </mat-error>
+          <mat-error *ngIf="formSubmit.get('query')?.errors?.['invalidCharacters']">
+            Only letters, digits, spaces, and these characters are allowed: , -
+            / \
+          </mat-error>
+          <mat-error *ngIf="(formSubmit.controls['query'].touched ) && formSubmit.get('query')?.errors?.['pattern']">
+            Please enter at least 3 words.
+          </mat-error>
+        </div>
+      </div>
+      <ng-container *ngIf="this.ministryNameToggle">
+        <div class="row align-items-center">
+          <div class="col-md-3 form-group">
+            <label for="">Status</label>
+          </div>
+          <div class="col-md-4 form-group">
+            <mat-form-field appearance="outline" class="example-full-width">
+              <input matInput placeholder="Enter Status" value="" formControlName="grievanceStatus" readonly />
+
+              <mat-error *ngIf="formSubmit.controls['grievanceStatus'].touched">
+                This field is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="col-md-12 form-group" *ngIf="!this.ministryNameToggle">
+        <button type="button" class="btn" (click)="submitFormData()">
+          Register
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

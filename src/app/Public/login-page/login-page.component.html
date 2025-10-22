@@ -1,0 +1,273 @@
+<div class="inner-banner-wrap">
+  <div class="container-fluid">
+    <div class="banner-bg">
+      <img src="./assets/images/weferfe.png" />
+      <h3 class="header-title">Grievance</h3>
+    </div>
+
+    <div class="custom-tabs">
+      <ul class="nav nav-tabs scroll">
+        <li class="nav-item">
+          <a routerLink="/home" class="nav-link">
+            <img src="./assets/images/back-btn-white.svg" />
+          </a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link active">
+            <img src="./assets/images/login.svg" alt="" />
+            <span>Login</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <!---custom-tabs-->
+  </div>
+</div>
+
+<div class="login-pages">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4  ">
+        <div class="login-form">
+          <h3>Login</h3>
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col-md-9 group-form fieldwrapper">
+                <label class="form-label">Select Academic Year</label>
+                <mat-form-field appearance="outline">
+                  <mat-label>Select</mat-label>
+                  <mat-select (selectionChange)="onYearChange()" formControlName="academicYear" required>
+                    <mat-option *ngFor="let year of academicYears" [value]="year">
+                      {{ year }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="
+                      form.get('academicYear')?.touched &&
+                      form.get('academicYear')?.hasError('required')
+                    ">
+                    This field is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <ng-container *ngIf="shouldShowRadioGroup()">
+                <div class="col-md-12 group-form">
+                  <mat-radio-group aria-label="Select an option" formControlName="applicationType">
+                    <mat-radio-button value="F">Fresh</mat-radio-button>
+                    <mat-radio-button value="R">Renewal</mat-radio-button>
+                  </mat-radio-group>
+                  <mat-error *ngIf="
+                      form.get('applicationType')?.touched &&
+                      form.get('applicationType')?.hasError('required')
+                    ">
+                    This field is required
+                  </mat-error>
+                </div>
+
+                <div class="col-md-12 group-form">
+                  <p>Continue With</p>
+                  <mat-radio-group aria-label="Select an option" formControlName="loginType">
+                    <mat-radio-button value="P">Password</mat-radio-button>
+                    <mat-radio-button value="M">Mobile No</mat-radio-button>
+                  </mat-radio-group>
+                  <mat-error *ngIf="
+                      form.get('loginType')?.touched &&
+                      form.get('loginType')?.hasError('required')
+                    ">
+                    This field is required
+                  </mat-error>
+                </div>
+
+                <div class="col-md-12 group-form fieldwrapper" *ngIf="!showmobilenumber">
+                  <label class="form-label">Application ID</label>
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <input matInput placeholder="Enter Application ID" formControlName="applicationID" />
+                    <mat-error *ngIf="
+                        form.get('applicationID')?.touched &&
+                        form.get('applicationID')?.hasError('required')
+                      ">
+                      Please Enter Your Application ID
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-12 group-form fieldwrapper" *ngIf="showmobilenumber">
+                  <label class="form-label">Mobile No.</label>
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <input matInput placeholder="Enter MobileNo." formControlName="mobileno" maxlength="10" />
+                    <mat-error *ngIf="form.get('mobileno')?.hasError('required')">
+                      Mobile number is required
+                    </mat-error>
+                    <mat-error *ngIf="form.get('mobileno')?.hasError('pattern')">
+                      Only numbers are allowed
+                    </mat-error>
+                    <mat-error *ngIf="
+                        form.get('mobileno')?.hasError('minlength') ||
+                        form.get('mobileno')?.hasError('maxlength')
+                      ">
+                      Mobile number must be 10 digits
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </ng-container>
+              <div class="col-md-9 group-form fieldwrapper" *ngIf="!shouldShowRadioGroup()">
+                <label class="form-label">
+                  OTR (One Time Registration) No.</label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <input matInput placeholder="Enter OTR (One Time Registration) No" formControlName="otr"
+                    autocomplete="off" maxlength="14" minlength="14" />
+                  <mat-error *ngIf="
+                      form.get('otr')?.touched &&
+                      form.get('otr')?.hasError('required')
+                    ">
+                    Please Enter Your OTR
+                  </mat-error>
+
+                  <mat-error *ngIf="
+                      form.get('otr')?.touched &&
+                      form.get('otr')?.hasError('minlength')
+                    ">
+                    OTR must be of 14 character
+                  </mat-error>
+
+                  <mat-error *ngIf="
+                      form.get('otr')?.touched &&
+                      form.get('otr')?.hasError('pattern')
+                    ">
+                    Only numbers are allowed
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-9 group-form fieldwrapper" *ngIf="!showmobilenumber">
+                <label class="form-label"> Password</label>
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <input matInput placeholder="Enter Password" [type]="show ? 'password' : 'text'"
+                    formControlName="password" autocomplete="off" (copy)="disableCopyPaste($event)"
+                    (cut)="disableCopyPaste($event)" (paste)="disableCopyPaste($event)" />
+                  <mat-error *ngIf="
+                      form.get('password')?.touched &&
+                      form.get('password')?.hasError('required')
+                    ">
+                    Please Enter Your Password
+                  </mat-error>
+                </mat-form-field>
+                <button type="button" class="eyeslash" (click)="toogle()">
+                  <i *ngIf="!show" class="bi bi-eye-fill"></i>
+                  <i *ngIf="show" class="bi bi-eye-slash-fill"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-9 group-form">
+                <div class="form-check">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Image Captcha
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-9 group-form">
+                <div class="captcha col-12 form-control">
+                  <img [src]="imageSource" alt="Image Source" />
+                </div>
+                <div class="refresh-captcha" id="refreshCaptchaButton" (click)="refreshCaptcha()">
+                  <img src="./assets/images/refresh.svg" alt="" />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-9 group-form">
+                <label class="form-label">Captcha Code</label>
+                <mat-form-field appearance="outline" class="example-full-width fieldwrapper">
+                  <input matInput placeholder="Enter Captcha Code" formControlName="captcha" autocomplete="off"
+                    maxlength="6" />
+                  <mat-error *ngIf="
+                      form.get('captcha')?.touched &&
+                      form.get('captcha')?.hasError('required')
+                    ">
+                    This field is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-12 group-form">
+                <div class="submit-btn">
+                  <button type="button" routerLink="/home" class="btn cancel">
+                    Cancel
+                  </button>
+                  <button type="button" class="btn" (click)="loginUser()" *ngIf="!showmobilenumber">
+                    Login
+                  </button>
+                  <button type="button" class="btn" *ngIf="showmobilenumber" (click)="studentLoginUsingOTP()">
+                    Send OTP
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-lg-8 borderleft">
+        <div class="usinglist">
+          <h2>Welcome to the Grievance Portal</h2>
+          <p>
+            This portal has been designed to help
+            <b>Students, Institute Nodal Officers, District Nodal Officers,
+              State Nodal Officers, and Ministry Nodal Officers</b>
+            raise and resolve issues related to scholarship applications in a
+            transparent and efficient manner.
+          </p>
+
+          <h5>What this portal offers:</h5>
+
+          <div class="usinglist2">
+            <h3>Students</h3>
+            <ul>
+              <li>
+                Log in using your <b>OTR & Password </b> or
+                <b>Mobile No. OTP.</b>
+              </li>
+              <li>
+                View all your scholarship applications by <b>Application ID.</b>
+              </li>
+              <li>
+                File grievances related to your applications by filling the
+                <b>Grievance Form.</b>
+              </li>
+              <li>
+                Select the relevant
+                <b>Issue, Sub-Issue, Scheme, <br />
+                  and Ministry,</b>
+                upload supporting documents, and describe your query.
+              </li>
+              <li>Track the status of your grievances anytime.</li>
+            </ul>
+          </div>
+
+          <div class="usinglist2">
+            <h3>Key Features</h3>
+            <ul>
+              <li>Easy login options for all user categories.</li>
+              <li>
+                Simple grievance filing process with relevant details and file
+                upload.
+              </li>
+              <li>Real-time status tracking of submitted grievances.</li>
+              <li>
+                Transparent redressal mechanism for scholarship-related
+                concerns.
+              </li>
+            </ul>
+          </div>
+          <p>
+            Please log in with your valid credentials to begin filing or
+            tracking your grievances.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

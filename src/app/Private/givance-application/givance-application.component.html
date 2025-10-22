@@ -1,0 +1,66 @@
+<p>givance-application works!</p>
+<div class="inner-banner-wrap">
+  <div class="container-fluid">
+    <div class="banner-bg">
+      <img src="./assets/images/weferfe.png" />
+      <h3 class="header-title">Grievance</h3>
+    </div>
+
+    <div class="custom-tabs">
+      <ul class="nav nav-tabs scroll">
+        <!-- <li class="nav-item">
+          <a (click)="goBack()" class="nav-link">
+            <img src="./assets/images/back-btn-white.svg" />
+          </a>
+        </li> -->
+        <li class="nav-item">
+          <button class="nav-link active" style="cursor: default;">
+            <img src="./assets/images/Grievance.svg" alt="" />
+            <span>Student Grievance</span>
+          </button>
+        </li>
+      </ul>
+
+      @if(this.applicantName){
+      <div class="tittlehd">
+        <h2><span>Welcome :</span> {{applicantName}}</h2>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="login-pages">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="d-flex align-items-start flex-wrap flex-lg-nowrap">
+          <div
+            class="nav flex-column nav-pills vertical-tabs me-3"
+            id="v-pills-tab"
+            role="tablist"
+            aria-orientation="vertical"
+          >
+            <button
+              class="nav-link active"
+              id="v-pills-home-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-home"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-home"
+              aria-selected="true"
+            >
+              View All Application’s
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="tab-content vertical-tab-content" id="v-pills-tabContent">
+          <router-outlet />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

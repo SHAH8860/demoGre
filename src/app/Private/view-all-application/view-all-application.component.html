@@ -1,0 +1,73 @@
+<div class="card-body">
+  <h5>All Applications</h5>
+  <div class="table-scroll">
+    <mat-table [dataSource]="allApplicationList" class="mat-elevation-z8">
+      <ng-container matColumnDef="sn">
+        <mat-header-cell *matHeaderCellDef> Sr. No. </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index">
+          {{ i + 1 }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="otr_id">
+        <mat-header-cell *matHeaderCellDef> OTR No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.otr_id }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="application_id">
+        <mat-header-cell *matHeaderCellDef> Application ID </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.application_id }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="academic_year">
+        <mat-header-cell *matHeaderCellDef> Academic Year </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ formatAcademicYear(element.academic_year) }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="fresh_renewal">
+        <mat-header-cell *matHeaderCellDef> Fresh / Renewal </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ getFreshOrRenewal(element.fresh_renewal) }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="scholarship_incentive">
+        <mat-header-cell *matHeaderCellDef>
+          Incentive / Scholarship
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ getScholarshipOrIncentive(element.scholarship_incentive) }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="application_status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ getApplicationStatusLabel(element.application_status) }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button
+            mat-button
+            color="primary"
+            class="btn"
+            (click)="redirectWithParam(element)"
+          >
+            Register
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+  <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
+
+

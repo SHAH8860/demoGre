@@ -1,0 +1,72 @@
+::ng-deep.mat-mdc-paginator {
+    background-color: transparent !important;
+    padding-top: 40px;
+}
+
+.mat-mdc-cell {padding:6px 5px !important;font-size: 13px;font-weight: 400;color: #000;line-height: normal;text-align: left;border: 0px;}
+.mat-mdc-header-cell {font-weight: 700;color: #000;font-size: 13px;padding: 6px 5px !important;border: 0px;}
+
+.mat-mdc-table {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.mat-mdc-cell {
+    border-right: 1px solid #ccc;
+    justify-content: center;
+}
+
+.mat-mdc-cell:last-child {
+    border-right: 0px;
+}
+
+.mat-mdc-header-cell {
+    border-right: 1px solid #ccc;
+    justify-content: center;
+}
+
+.mat-mdc-header-cell:last-child {
+    border-right: 0px;
+}
+
+mat-header-cell.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-sn.mat-column-sn {
+    max-width: 80px;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    justify-content: center;
+}
+
+mat-cell.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-sn.mat-column-sn {
+    max-width: 80px;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    justify-content: center;
+}
+
+mat-header-row.mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row {
+    background: #f2f2f2;
+}
+
+
+
+.mat-mdc-table tbody,
+.mat-mdc-table tfoot,
+.mat-mdc-table thead,
+.mat-mdc-cell,
+.mat-mdc-footer-cell,
+.mat-mdc-header-row,
+.mat-mdc-row,
+.mat-mdc-footer-row,
+.mat-mdc-table .mat-mdc-header-cell {
+    border-width: 0.5px;
+    border-color: #ccc;
+
+}
+
+::ng-deep.mdc-data-table__cell.cdk-cell.cdk-column-academic_year.mat-column-academic_year {
+    justify-content: center !important;
+}
+
+mat-row.mat-mdc-row.mdc-data-table__row.cdk-row:last-child {
+    border-bottom: 1px solid #ccc;
+}

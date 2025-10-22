@@ -1,0 +1,73 @@
+<div class="inner-banner-wrap">
+  <div class="container-fluid">
+    <div class="banner-bg">
+      <img src="./assets/images/weferfe.png" />
+      <h3 class="header-title">Grievance</h3>
+    </div>
+
+    <div class="custom-tabs">
+      <ul class="nav nav-tabs scroll">
+        <!-- <li class="nav-item">
+          <a (click)="backToPreviousPage()" class="nav-link" style="cursor: pointer;">
+            <img src="./assets/images/back-btn-white.svg" />
+          </a>
+        </li> -->
+        <li class="nav-item">
+          <button class="nav-link active" style="cursor: default;">
+            <img src="./assets/images/Grievance.svg" alt="" />
+            <span>Institute Grievance</span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="username">
+
+      <div *ngIf="this.instituteName" class="tittlehd">
+        <h2><span>Welcome:</span> {{this.instituteName}}</h2>
+      </div>
+      <div *ngIf="this.userType" class="tittlehd">
+        <h2><span>User Type:</span> {{this.userType}}</h2>
+      </div>
+      </div>
+
+    </div>
+    <!---custom-tabs-->
+  </div>
+</div>
+<!--inner-banner-wrap End-->
+
+<div class="login-pages">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="d-flex align-items-start flex-wrap flex-lg-nowrap">
+          <div class="nav flex-column nav-pills vertical-tabs me-3" id="v-pills-tab" role="tablist"
+            aria-orientation="vertical">
+            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile"
+              type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"
+              [routerLink]="['/institute-dashBoard/institute-grievance-status']" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              View Grievance Status
+            </button>
+            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings"
+              type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"
+              [routerLink]="['/institute-dashBoard/institute-all-grivenceList']" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              All Grievance List
+            </button>
+            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages"
+              type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false"
+              [routerLink]="['/institute-dashBoard/institute-grivance-registration']" routerLinkActive="active">
+              Register Grievance
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="tab-content vertical-tab-content" id="v-pills-tabContent">
+          <router-outlet />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

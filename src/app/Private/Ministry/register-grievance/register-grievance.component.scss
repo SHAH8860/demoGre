@@ -1,0 +1,224 @@
+.vertical-tab-content {
+  padding: 60px;
+}
+
+.login-form {
+  padding: 30px 30px;
+}
+
+.form-card {
+  padding: 20px 20px;
+  // border: 1px solid #ccc;
+  border-radius: 21px;
+
+  position: relative;
+}
+
+.hd-bg h4 {
+  font-size: 18px;
+  color: #dd69c4;
+  font-weight: 600;
+  margin-bottom: 30px;
+  position: relative;
+  padding: 0px 30px;
+}
+
+.textareabg textarea.form-control.ng-untouched.ng-pristine.ng-valid {
+    background: #E7E7E7 !important;
+}
+
+
+.hd-bg {
+  position: relative;
+}
+
+.hd-bg:after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+}
+
+.heading {
+  position: relative;
+  padding: 30px 30px 20px 30px;
+}
+
+.grievancehd{display: flex; align-items: center; justify-content: space-between;}
+
+
+.heading:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+}
+
+.heading h4 {
+  font-size: 18px;
+  color: #dd69c4;
+  font-weight: 600;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.heading h6 {
+  font-size: 16px;
+  color: #202020;
+  font-weight: 600;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.heading p {
+  font-size: 16px;
+  color: #202020;
+  font-weight: 400;
+  margin-bottom: 0px;
+  position: relative;
+}
+
+.align-items {
+  align-items: center;
+}
+
+.Attestefl h6 {
+  font-size: 18px;
+  color: #dd69c4;
+  font-weight: 600;
+  margin-bottom: 0px;
+  position: relative;
+}
+
+
+
+
+.photo-werrp {
+  border-radius: 6px;
+  border: 1px solid #9e9e9e;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.photo-werrp img {
+  width: 100%;
+  height: 100%;
+}
+
+.mat-mdc-form-field-infix {
+  min-height: 45px !important;
+  padding: 10px !important;
+  padding-bottom: 0px !important;
+}
+
+.login-form .form-label {
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  color: #000000;
+  font-weight: 500;
+  font-size: 16px;
+  border: 0px;
+  border-radius: 0px;
+  min-height: 45px;
+  width: 100%;
+}
+
+
+
+//otp Css starts here 
+
+
+.profile-otp {
+  padding: 30px 20px;
+  max-width: 450px;
+  background: #fff;
+  box-shadow: 0px 0px 10px #ddd;
+  border-radius: 9px;
+  margin: 0 auto;
+  border: 1px solid #ddd7d7
+}
+
+.profile-otp h5 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 0.9px;
+  border-bottom: 2px solid #e361c2;
+}
+
+.otp-from {
+  position: relative;
+  overflow: hidden;
+}
+
+.otp-from p {
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.otp-from label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.otp-from .form-control {
+  text-align: center;
+}
+
+.login-btn {
+  margin-top: 40px;
+}
+
+.mat-mdc-unelevated-button:not(:disabled) {
+  background-color: #f04f8e;
+  border-radius: 9px;
+  height: 45px;
+}
+
+.mdc-button {
+  padding: 12px 30px;
+}
+
+
+.d-none {
+  display: none !important;
+}
+
+.institure_para {
+  background: #ca71c9;
+  color: white;
+  font-size: 18px;
+  padding: 3px;
+}
+
+.icon_parent_class{
+  position: relative;
+}
+
+.download_icon{
+
+    font-size: 20px;
+    color: #5896c0;
+    cursor: pointer;
+}
+
+.form-card label{color: #000000;}
+::ng-deep.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label{top: 22px !important;}
+::ng-deep.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above{top:58% !important;}
+
+

@@ -1,0 +1,125 @@
+//otp Css starts here 
+
+
+.profile-otp {
+    padding: 30px 20px;
+    max-width: 460px;
+    background: #fff;
+    box-shadow: 0px 0px 10px #ddd;
+    border-radius: 9px;
+    margin: 0 auto;
+}
+
+.profile-otp h5 {
+    font-size: 19px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    border-bottom: 2px solid #e361c2;
+}
+
+.profile-otp .col{padding: 0px 5px;}
+
+.otp-from {
+    position: relative;
+   
+}
+
+.otp-from p {
+    color: red;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.otp-from label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.otp-from .form-control {
+    text-align: center;
+}
+
+
+
+.mat-mdc-unelevated-button:not(:disabled) {
+    background-color: #575757;
+    border-radius: 9px;
+    height: 45px;
+}
+
+
+
+.submit-btn .btn{width: auto; margin: 0px 5px;}
+
+
+.institure_para {
+    background: #ca71c9;
+    color: white;
+    font-size: 18px;
+    padding: 3px;
+}
+.Captchawerap {margin-top: 20px;}
+
+.Captchawerap .form-control {
+    font-size: 16px;
+    border: 1px solid #74777f;
+    border-radius: 5px;
+    height: 46px;
+    margin-bottom: 20px;
+}
+.Captchawerap .form-control img {
+    height: 35px;
+    width: 40%;
+    object-fit: cover;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.refresh-captcha {
+    top: 36px;
+    right: -22px;
+}
+
+  ::ng-deep.mat-mdc-text-field-wrapper {
+    height: 46px !important; line-height: normal; font-size: 14px;}
+
+
+ ::ng-deep.mdc-text-field--outlined .mat-mdc-form-field-infix, .mdc-text-field--no-label .mat-mdc-form-field-infix {
+    padding-top: 14px !important;
+    padding-bottom: 0px !important;
+    line-height: normal;
+}
+
+  ::ng-deep.mat-mdc-select-value{line-height: normal; font-size: 14px;}
+   ::ng-deep.mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix{ padding-top: 10px !important;}
+    ::ng-deep.mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label{font-size: 14px;}
+
+    .mat-mdc-form-field-infix{}
+
+
+    ::ng-deep.cdk-overlay-pane.mat-mdc-dialog-panel{width: auto !important; height: auto !important; border: 1px solid #dd69c4;border-radius: 9px !important;}
+     ::ng-deep.mat-mdc-dialog-surface{border-radius: 9px !important; box-shadow: none !important;}
+
+
+     ::ng-deep.cdk-overlay-dark-backdrop {
+    background: #000000c7 !important;
+}
+
+.cross-icon{position: absolute; text-align: right; top: 8px; right: 12px;}
+.cross-icon i {
+    font-size: 28px;
+    color: #dd69c4;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+.ng-invalid{
+    border-color: red;
+}
+
+
+
+

@@ -1,0 +1,63 @@
+<div class="card-body">
+  <h5>All Grievance List</h5>
+  <div class="table-scroll">
+    <mat-table [dataSource]="allGrievanceList" class="mat-elevation-z8">
+      <ng-container matColumnDef="sn">
+        <mat-header-cell *matHeaderCellDef> Sr. No. </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index">
+          {{ i + 1 }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="registrationNo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Registration No.
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.registrationNo }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="mobileNo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Mobile No
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.mobileNo }} </mat-cell>
+      </ng-container>
+      <!-- <ng-container matColumnDef="query">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Query
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.query }} </mat-cell>
+      </ng-container> -->
+      <ng-container matColumnDef="dateTime">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Date
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.dateTime | date : "dd-MM-yyy HH:mm:ss" }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef class="text-center">
+          Action
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button
+            class="btn btn-primary"
+            (click)="getGrievanceDetailsAndStatus(element)"
+          >
+            View Grievance Details
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+  <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>

@@ -1,0 +1,49 @@
+<div class="card-body">
+  <h5>View Grievance  Status</h5>
+  <div class="form-card">
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-md-4 form-group fieldwrapper">
+          <label for="">Registration No.</label>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <input
+              matInput
+              placeholder="Enter Registration No"
+              formControlName="registrationNo"
+              maxlength="25"
+            />
+            <mat-error
+              *ngIf="
+                form.get('registrationNo')?.touched &&
+                form.get('registrationNo')?.hasError('required')
+              "
+            >
+              This field is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4 form-group">
+          <label for="">Mobile No.</label>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <input
+              matInput
+              placeholder="9899546787"
+              formControlName="mobileNo"
+              readonly
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-4 form-group">
+          <label for=""></label>
+          <button
+            type="button"
+            class="btn"
+            (click)="getGrievanceDetailsAndStatus()"
+          >
+            View Status
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="profile-otp">
+  <div class="cross-icon">
+    <i class="bi bi-x-circle-fill" mat-dialog-close></i>
+  </div>
+
+  <div class="otp-from">
+    <p>OTP has been sent on your Registered Mobile No.</p>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-md-12 group-from">
+          <label>Please Enter 5 Digit OTP <span>*</span></label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <input #otp1 type="text" formControlName="otp1" maxlength="1" pattern="[0-9]*" inputmode="numeric"
+            class="form-control" (keyup)="moveFocus(otp1, otp2)" (keydown)="handleBackspace($event, otp1, null)"
+            placeholder="" />
+         
+        </div>
+        <div class="col">
+          <input #otp2 type="text" formControlName="otp2" maxlength="1" class="form-control"
+            (keyup)="moveFocus(otp2, otp3)" (keydown)="handleBackspace($event, otp2, otp1)" placeholder="" />
+         
+        </div>
+        <div class="col">
+          <input #otp3 type="text" formControlName="otp3" maxlength="1" class="form-control"
+            (keyup)="moveFocus(otp3, otp4)" (keydown)="handleBackspace($event, otp3, otp2)" placeholder="" />
+          
+        </div>
+        <div class="col">
+          <input #otp4 type="text" formControlName="otp4" maxlength="1" class="form-control"
+            (keyup)="moveFocus(otp4, otp5)" (keydown)="handleBackspace($event, otp4, otp3)" placeholder="" />
+          
+        </div>
+        <div class="col">
+          <input #otp5 type="text" formControlName="otp5" maxlength="1" class="form-control"
+            (keyup)="moveFocus(otp5, null)" (keydown)="handleBackspace($event, otp5, otp4)" placeholder="" />
+        
+        </div>
+
+        <div class="row Captchawerap" >
+          <div class="col-md-12 group-form">
+            <label>
+              Image Captcha
+            </label>
+            <div class="captcha col-12 form-control">
+              <img [src]="imageSource" alt="Image Source" />
+            </div>
+            <div class="refresh-captcha" id="refreshCaptchaButton" (click)="refreshCaptcha()">
+              <img src="./assets/images/refresh.svg" alt="" />
+            </div>
+          </div>
+
+
+          <div class="col-md-12 group-form">
+            <label class="form-label">Captcha Code</label>
+            <mat-form-field appearance="outline" class="example-full-width fieldwrapper">
+              <input matInput placeholder="Enter Captcha Code" formControlName="captcha" autocomplete="off" maxlength="6" />
+              <mat-error *ngIf="
+                      form.get('captcha')?.touched &&
+                      form.get('captcha')?.hasError('required')
+                    ">
+                This field is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 group-from text-center">
+          <div class="submit-btn mt-4">
+            <div class="example-button-row">
+              <button mat-flat-button class="btn" (click)="inoLoginUsingOTPVerify()">Confirm OTP</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
